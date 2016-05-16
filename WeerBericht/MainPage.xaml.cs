@@ -47,7 +47,9 @@ namespace WeerBericht
 
             var position = await locator.GetGeopositionAsync();
 
-            await MyMap.TrySetViewAsync(position.Coordinate.Point, 18D);           
+            await MyMap.TrySetViewAsync(position.Coordinate.Point, 18D);
+
+            mySlider.Value = MyMap.ZoomLevel;
 
         }       
         private void getPositionButton_Click(object sender, RoutedEventArgs e)
@@ -78,7 +80,10 @@ namespace WeerBericht
 
         private void mySlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
-
+            if (MyMap != null)
+            {
+                MyMap.ZoomLevel = e.NewValue;
+            }
         }
     }
 }
