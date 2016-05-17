@@ -46,10 +46,6 @@
                     Content="Get Position"
                     Click="getPositionButton_Click"
                     Margin="0,0,20,0" />
-            <Button Name="setPosition" 
-                    Content="Set Position"
-                    Click="setPositionButton_Click"
-                    Margin="0,0,20,0" />
             
             <Button x:Name="Resp_btn" 
                     Content="Sent request" 
