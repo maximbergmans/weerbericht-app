@@ -32,13 +32,10 @@
 
         <!--ContentPanel - place additional content here-->
         
-
         <!--{"_id":2799413,"name":"Diepenbeek","country":"BE","coord":{"lon":5.4221,"lat":50.907799}}
             45910e37f9b3c1547078f7a23e0fad4c
             http://api.openweathermap.org/data/2.5/forecast/city?id=2799413&APPID=45910e37f9b3c1547078f7a23e0fad4c
-            http://api.openweathermap.org/data/2.5/weather?lat=50.907799&lon=5.4221&APPID=45910e37f9b3c1547078f7a23e0fad4c -->
-            
-        
+            http://api.openweathermap.org/data/2.5/weather?lat=50.907799&lon=5.4221&APPID=45910e37f9b3c1547078f7a23e0fad4c -->              
         
         <StackPanel Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
             <maps:MapControl Name="MyMap" Height="360" Margin="0,0,-0.333,0" />
@@ -52,7 +49,12 @@
             <Button Name="setPosition" 
                     Content="Set Position"
                     Click="setPositionButton_Click"
-                    Margin="0,0,20,0" />           
+                    Margin="0,0,20,0" />
+            
+            <Button x:Name="Resp_btn" 
+                    Content="Sent request" 
+                    Click="Resp_btn_Click" 
+                    Margin="0,0,20,0" />
         </StackPanel>
         
         <TextBlock Name="positionTextBlock"

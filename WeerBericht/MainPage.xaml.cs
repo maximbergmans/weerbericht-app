@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace WeerBericht
     /// </summary>
     public sealed partial class MainPage : Page
     {
-
+        
 
         public MainPage()
         {
@@ -54,11 +55,6 @@ namespace WeerBericht
         }       
         private void getPositionButton_Click(object sender, RoutedEventArgs e)
         {
-            /*string webresponse;
-            HttpClient http = new System.Net.Http.HttpClient();
-            HttpResponseMessage response = await http.GetAsync("http://api.openweathermap.org/data/2.5/weather?lat=50.907799&lon=5.4221&APPID=45910e37f9b3c1547078f7a23e0fad4c");
-            webresponse = await response.Content.ReadAsStringAsync();*/
-
             positionTextBlock.Text = String.Format("{0}, {1}",
                 MyMap.Center.Position.Latitude,
                 MyMap.Center.Position.Longitude);
@@ -75,7 +71,6 @@ namespace WeerBericht
             {
 
             }
-
         }
 
         private void mySlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
@@ -84,6 +79,73 @@ namespace WeerBericht
             {
                 MyMap.ZoomLevel = e.NewValue;
             }
+        }
+
+        private async void Resp_btn_Click(object sender, RoutedEventArgs e)
+        {         
+            HttpClient client = new HttpClient();
+            var data = await client.GetStringAsync("http://api.openweathermap.org/data/2.5/weather?lat=50.907799&lon=5.4221&APPID=45910e37f9b3c1547078f7a23e0fad4c");           
+            var weatherList = JsonConvert.DeserializeObject<weather>(data);
+            positionTextBlock.Text = "Temperature: " + Convert.ToString(weatherList.main.temp-272.15)+ " ° Celsius";
+
+        }
+        public class Coord
+        {
+            public double lon { get; set; }
+            public double lat { get; set; }
+        }
+
+        public class Weather
+        {
+            public int id { get; set; }
+            public string main { get; set; }
+            public string description { get; set; }
+            public string icon { get; set; }
+        }
+
+        public class Main
+        {
+            public double temp { get; set; }
+            public double pressure { get; set; }
+            public int humidity { get; set; }
+            public double temp_min { get; set; }
+            public double temp_max { get; set; }
+            public double sea_level { get; set; }
+            public double grnd_level { get; set; }
+        }
+
+        public class Wind
+        {
+            public double speed { get; set; }
+            public double deg { get; set; }
+        }
+
+        public class Clouds
+        {
+            public int all { get; set; }
+        }
+
+        public class Sys
+        {
+            public double message { get; set; }
+            public string country { get; set; }
+            public int sunrise { get; set; }
+            public int sunset { get; set; }
+        }
+
+        public class weather
+        {
+            public Coord coord { get; set; }
+            public List<Weather> weatherapp { get; set; }
+            public string @base { get; set; }
+            public Main main { get; set; }
+            public Wind wind { get; set; }
+            public Clouds clouds { get; set; }
+            public int dt { get; set; }
+            public Sys sys { get; set; }
+            public int id { get; set; }
+            public string name { get; set; }
+            public int cod { get; set; }
         }
     }
 }
