@@ -57,6 +57,24 @@
                    Grid.Row="3"
                    FontSize="22" />
         
+        <!--<ListView x:Name="placesListView" HorizontalAlignment="Left" Height="111" Margin="0,455,0,0" VerticalAlignment="Top" Width="390">
+            <ListView.ItemTemplate>
+
+                <DataTemplate>
+
+                    <StackPanel Orientation="Vertical">
+
+                        <TextBlock Text="{Binding name}" FontSize="25" />
+
+                        <TextBlock Text="{Binding geometry.latitude.lat}" FontSize="25" Margin="0,0,0,10" />
+
+                    </StackPanel>
+
+                </DataTemplate>
+
+            </ListView.ItemTemplate>
+        </ListView>-->
+        
         <Slider Name="mySlider"
                 Maximum="20"
                 Minimum="10"
