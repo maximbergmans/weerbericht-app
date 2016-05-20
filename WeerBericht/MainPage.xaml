@@ -25,20 +25,18 @@
 
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="WeerBericht" Style="{ThemeResource TitleTextBlockStyle}" Margin="12,0"/>
-            <TextBlock Text="WeerBericht" Margin="9,-19,0,0" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,9,0,5">
+            <TextBlock Text="WeerBericht" Margin="9,-30,0,0" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         
-        <!--{"_id":2799413,"name":"Diepenbeek","country":"BE","coord":{"lon":5.4221,"lat":50.907799}}
-            45910e37f9b3c1547078f7a23e0fad4c
-            http://api.openweathermap.org/data/2.5/forecast/city?id=2799413&APPID=45910e37f9b3c1547078f7a23e0fad4c
-            http://api.openweathermap.org/data/2.5/weather?lat=50.907799&lon=5.4221&APPID=45910e37f9b3c1547078f7a23e0fad4c -->              
+        <!--45910e37f9b3c1547078f7a23e0fad4c
+            http://api.openweathermap.org/data/2.5/weather?lat=50.907799&lon=5.4221&APPID=45910e37f9b3c1547078f7a23e0fad4c
+        -->              
         
         <StackPanel Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <maps:MapControl Name="MyMap" Height="360" Margin="0,0,-0.333,0" />
+            <maps:MapControl Name="MyMap" Height="424" Margin="0,0,-0.333,0" />
         </StackPanel>
         
         <StackPanel Orientation="Horizontal" Grid.Row="2">
@@ -52,26 +50,19 @@
                     Click="Resp_btn_Click" 
                     Margin="0,0,20,0" />
         </StackPanel>
-        
+
         <TextBlock Name="positionTextBlock"
                    Grid.Row="3"
                    FontSize="22" />
         
-        <!--<ListView x:Name="placesListView" HorizontalAlignment="Left" Height="111" Margin="0,455,0,0" VerticalAlignment="Top" Width="390">
+        <!--<ListView x:Name="weatherListView" HorizontalAlignment="Left" Height="111"  VerticalAlignment="Top" Width="390">
             <ListView.ItemTemplate>
-
                 <DataTemplate>
-
                     <StackPanel Orientation="Vertical">
-
                         <TextBlock Text="{Binding name}" FontSize="25" />
-
                         <TextBlock Text="{Binding geometry.latitude.lat}" FontSize="25" Margin="0,0,0,10" />
-
                     </StackPanel>
-
                 </DataTemplate>
-
             </ListView.ItemTemplate>
         </ListView>-->
         

@@ -21,6 +21,7 @@ using System.Globalization;
 using Windows.UI.Xaml.Shapes;
 using Windows.UI;
 using Windows.UI.Xaml.Controls.Maps;
+using WeerBericht.Classes;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -88,8 +89,11 @@ namespace WeerBericht
             HttpClient client = new HttpClient();
             //var data = await client.GetStringAsync("http://api.openweathermap.org/data/2.5/weather?lat=50.907799&lon=5.4221&APPID=45910e37f9b3c1547078f7a23e0fad4c");
             var data = await client.GetStringAsync("http://api.openweathermap.org/data/2.5/weather?lat="+Convert.ToString(latitude,nfi)+"&lon="+ Convert.ToString(longitude, nfi) +"&APPID=45910e37f9b3c1547078f7a23e0fad4c");
-            var weatherList = JsonConvert.DeserializeObject<weather>(data);
-            positionTextBlock.Text = "Temperature: " + Convert.ToString(weatherList.main.temp-272.15)+ " ° Celsius";
+            var weatherList = JsonConvert.DeserializeObject<RootObject>(data);
+
+            positionTextBlock.Text = "Temperature: " + Convert.ToString(weatherList.main.temp-272.15)+ " °Celsius" 
+                + "\n" + "Clouds: " + Convert.ToString(weatherList.clouds.all) + " %"
+                + "\n" + "Wind: " + Convert.ToString(weatherList.wind.speed) + Convert.ToString(weatherList.wind.deg);
 
         }
 
