@@ -72,8 +72,8 @@ namespace WeerBericht
                 MyMap.Center.Position.Latitude,
                 MyMap.Center.Position.Longitude);
 
+
         }
-        
 
         private void mySlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
@@ -84,26 +84,25 @@ namespace WeerBericht
         }
 
         private async void Resp_btn_Click(object sender, RoutedEventArgs e)
-        {
-                     
+        {                   
             HttpClient client = new HttpClient();
             //var data = await client.GetStringAsync("http://api.openweathermap.org/data/2.5/weather?lat=50.907799&lon=5.4221&APPID=45910e37f9b3c1547078f7a23e0fad4c");
             var data = await client.GetStringAsync("http://api.openweathermap.org/data/2.5/weather?lat="+Convert.ToString(latitude,nfi)+"&lon="+ Convert.ToString(longitude, nfi) +"&APPID=45910e37f9b3c1547078f7a23e0fad4c");
-            var weatherList = JsonConvert.DeserializeObject<RootObject>(data);
+            var weatherList = JsonConvert.DeserializeObject<RootObject>(data);          
 
-            positionTextBlock.Text = "Temperature: " + Convert.ToString(weatherList.main.temp-272.15)+ " °Celsius" 
+            positionTextBlock.Text = "Temperature: " + Convert.ToString(weatherList.main.temp - 272.15) + " °Celsius"
+                + "\n" + "Humidity: " + Convert.ToString(weatherList.main.humidity) + " %"
                 + "\n" + "Clouds: " + Convert.ToString(weatherList.clouds.all) + " %"
-                + "\n" + "Wind: " + Convert.ToString(weatherList.wind.speed) + Convert.ToString(weatherList.wind.deg);
-
+                + "\n" + "Wind: speed: " + Convert.ToString(weatherList.wind.speed) + " deg: " + Convert.ToString(weatherList.wind.deg);
         }
 
         private void AddMapIcon()
         {
-            MapIcon mapicon1 = new MapIcon();
-            mapicon1.Location = new Geopoint(new BasicGeoposition() { Latitude = Convert.ToDouble(latitude, nfi) , Longitude = Convert.ToDouble(longitude) });
-            mapicon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
-            mapicon1.Title = "your position";
-            MyMap.MapElements.Add(mapicon1);
+            MapIcon mapIcon1 = new MapIcon();
+            mapIcon1.Location = new Geopoint(new BasicGeoposition() { Latitude = Convert.ToDouble(latitude, nfi) , Longitude = Convert.ToDouble(longitude) });
+            mapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
+            mapIcon1.Title = "your position";
+            MyMap.MapElements.Add(mapIcon1);
         }
     }
 }

@@ -30,21 +30,21 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        
+
         <!--45910e37f9b3c1547078f7a23e0fad4c
             http://api.openweathermap.org/data/2.5/weather?lat=50.907799&lon=5.4221&APPID=45910e37f9b3c1547078f7a23e0fad4c
-        -->              
-        
-        <StackPanel Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <maps:MapControl Name="MyMap" Height="424" Margin="0,0,-0.333,0" />
+        -->
+
+        <StackPanel Grid.Row="1" x:Name="ContentRoot" Margin="15,1.5,15,58">
+            <maps:MapControl Name="MyMap" Height="375" Margin="0,0,0.667,0" />
         </StackPanel>
-        
-        <StackPanel Orientation="Horizontal" Grid.Row="2">
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,382.5,0,0">
             <Button Name="getPosition" 
                     Content="Get Position"
                     Click="getPositionButton_Click"
                     Margin="0,0,20,0" />
-            
+
             <Button x:Name="Resp_btn" 
                     Content="Sent request" 
                     Click="Resp_btn_Click" 
@@ -52,38 +52,13 @@
         </StackPanel>
 
         <TextBlock Name="positionTextBlock"
-                   Grid.Row="3"
-                   FontSize="22" />
-        
-        <!--<ListView x:Name="weatherListView" HorizontalAlignment="Left" Height="111"  VerticalAlignment="Top" Width="390">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{Binding name}" FontSize="25" />
-                        <TextBlock Text="{Binding geometry.latitude.lat}" FontSize="25" Margin="0,0,0,10" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>-->
-        
+                   Grid.Row="2"
+                   FontSize="22" Grid.RowSpan="3" Margin="0,0,0,31" />
+
         <Slider Name="mySlider"
                 Maximum="20"
-                Minimum="10"
+                Minimum="1"
                 ValueChanged="mySlider_ValueChanged"
-                Grid.Row="4" />
-        <!--https://www.youtube.com/watch?v=uQkYntrJDcs-->
-
-        <!--<TextBlock Text="test"
-                       x:Name="Longitude"
-                       TextWrapping="Wrap" 
-                       Style="{StaticResource SubheaderTextBlockStyle}"
-                       Margin="10,5" />
-            <TextBlock Text="test"
-                       x:Name="Latitude"
-                       TextWrapping="Wrap" 
-                       Style="{StaticResource SubheaderTextBlockStyle}"
-                       Margin="10,5" />-->
-                   
-        
+                Grid.Row="4" Margin="0,11,0,0" />
     </Grid>
 </Page>
