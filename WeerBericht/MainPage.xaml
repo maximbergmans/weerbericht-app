@@ -23,18 +23,12 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,9,0,5">
             <TextBlock Text="WeerBericht" Margin="9,-30,0,0" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-
-        <!--45910e37f9b3c1547078f7a23e0fad4c
-            http://api.openweathermap.org/data/2.5/weather?lat=50.907799&lon=5.4221&APPID=45910e37f9b3c1547078f7a23e0fad4c
-        -->
-
         <StackPanel Grid.Row="1" x:Name="ContentRoot" Margin="15,1.5,15,58">
             <maps:MapControl Name="MyMap" Height="375" Margin="0,0,0.667,0" />
         </StackPanel>
